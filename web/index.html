@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Buckshot">
+<meta name="theme-color" content="#000000">
+<meta name="format-detection" content="telephone=no">
+<title>Buckshot</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="preload" href="fonts/vt323-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  html, body {
+    margin: 0; padding: 0; height: 100%; overflow: hidden;
+    background: #000; color: #000;
+    overscroll-behavior: none;
+    -webkit-user-select: none; user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+  body { position: fixed; inset: 0; }
+  #screen {
+    position: absolute; left: 0; top: 0;
+    display: block;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+    touch-action: none;
+  }
+  /* CRT-ish scanlines, sized to the game pixel grid at runtime */
+  #scan {
+    position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(to bottom,
+      rgba(0,0,0,0) 0, rgba(0,0,0,0) var(--scan-on, 2px),
+      rgba(0,0,0,0.28) var(--scan-on, 2px), rgba(0,0,0,0.28) var(--scan, 3px));
+    mix-blend-mode: multiply;
+  }
+  #safe {
+    position: absolute; visibility: hidden; pointer-events: none;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  #haptic { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; overflow: hidden; left: -10px; top: -10px; }
+</style>
+</head>
+<body>
+<canvas id="screen" aria-label="Shell counter. Top half: blanks. Bottom half: live rounds."></canvas>
+<div id="scan"></div>
+<div id="safe"></div>
+<label id="haptic"><input type="checkbox" switch tabindex="-1"></label>
+<script src="app.js"></script>
+</body>
+</html>
