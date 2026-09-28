@@ -2,6 +2,8 @@
 
 A shell counter for Buckshot Roulette, made to run full-screen on an iPhone.
 
+**Open it:** https://fragmential.github.io/buckshot-roulette-helper/
+
 - **Top half:** blanks. **Bottom half:** live rounds.
 - **Setup:** tap a half to add a shell (up to 8 each), then tap **START ROUND** in the middle.
 - **Firing:** tap a half each time that kind of shell is fired. The middle display shows the chance the next shell is live.
